@@ -9,14 +9,12 @@ function ProductsPage () {
     const [products, setProducts] = useState(productData);
 
     const filterSearchHandler = (searchTerm) => {
-        console.log(searchTerm)
         const newArr = [...productData].filter(product =>  {
         return product.name.toLowerCase().includes(searchTerm)
             })
         setProducts(newArr)
         } 
     const filterStockHandler = (checked) => {
-        console.log(checked) 
         if (checked){
             const newArr = products.filter(product =>  {
                 return product.inStock === true
