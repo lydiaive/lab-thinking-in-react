@@ -7,11 +7,19 @@ import SearchBar from './SearchBar';
 function ProductsPage () {
 
   const [products, setProducts] = useState(productData);
+
+  const filterSearchHandler = (searchTerm) => {
+    console.log(searchTerm)
+    const newArr = [...productData].filter(product =>  {
+      return product.name.toLowerCase().includes(searchTerm)
+    })
+    setProducts(newArr)
+    } 
   
   return(
     <div>
         <h1>IronStore</h1>
-        <SearchBar></SearchBar>
+        <SearchBar searchHandler={filterSearchHandler}/>
         <ProductTable>
             {products.map((product) => {
                 if (product.inStock === true) {
