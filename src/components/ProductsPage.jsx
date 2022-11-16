@@ -6,20 +6,32 @@ import SearchBar from './SearchBar';
 
 function ProductsPage () {
 
-  const [products, setProducts] = useState(productData);
+    const [products, setProducts] = useState(productData);
 
-  const filterSearchHandler = (searchTerm) => {
-    console.log(searchTerm)
-    const newArr = [...productData].filter(product =>  {
-      return product.name.toLowerCase().includes(searchTerm)
-    })
-    setProducts(newArr)
-    } 
+    const filterSearchHandler = (searchTerm) => {
+        console.log(searchTerm)
+        const newArr = [...productData].filter(product =>  {
+        return product.name.toLowerCase().includes(searchTerm)
+            })
+        setProducts(newArr)
+        } 
+    const filterStockHandler = (checked) => {
+        console.log(checked) 
+        if (checked){
+            const newArr = products.filter(product =>  {
+                return product.inStock === true
+            })
+            setProducts(newArr)   
+        } else setProducts(productData)  
+        } 
   
   return(
     <div>
         <h1>IronStore</h1>
-        <SearchBar searchHandler={filterSearchHandler}/>
+        <SearchBar 
+            searchHandler={filterSearchHandler}
+            checkStockHandler={filterStockHandler}
+        />
         <ProductTable>
             {products.map((product) => {
                 if (product.inStock === true) {

@@ -3,12 +3,12 @@ function ProductTable (props) {
   
   return(
       <table>
-        <theader>
+        <thead>
         <tr>
           <th>Name</th>
           <th>Price</th>
         </tr>
-        </theader>
+        </thead>
         <tbody>
         {props.children}
         </tbody>
